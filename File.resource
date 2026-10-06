@@ -5,5 +5,5 @@ Library    QWeb
 *** Variables ***
 ${loginURL}           https://login.salesforce.com/
 ${username}           garvanshcrt@cyntexa.com
-${password}           @Mittal123
+${password}           @MITTAL123
 ${passkey}            C7I6UHV1K6
