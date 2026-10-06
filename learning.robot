@@ -8,6 +8,7 @@ Library                   RequestsLibrary
 Library                   Collections
 Suite Setup               Open Browser                ${loginURL}    chrome
 Suite Teardown            Close All Browsers
+Resource                  File.resource
 
 
 
@@ -65,4 +66,6 @@ Direct record creation using REST API
     UpdateRecord           Account                     ${Accounts}                     Phone=1234567899
     
     ${Query}               QueryRecords                query= Select id,Name from Account Where CreatedDate = TODAY Order By CreatedDate Desc limit 1
-    DeleteRecord           Account                     ${Accounts}
+    # DeleteRecord           Account                     ${Accounts}
+    Login salesforce
+    GoTo                   ${domain}/lightning/r/Account/${Accounts}/view
