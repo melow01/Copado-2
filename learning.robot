@@ -69,3 +69,6 @@ Direct record creation using REST API
     # DeleteRecord           Account                     ${Accounts}
     Login salesforce
     GoTo                   ${domain}/lightning/r/Account/${Accounts}/view
+    ClickText              Details
+    Run Keyword And Warn On Failure                    VerifyField            Phone                    1234567899
+    LogScreenshot
