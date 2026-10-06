@@ -59,11 +59,15 @@ ${ClientSecret}           8FF9D5E9842AA5FC14B6BC7D08ED531D2CB84C559097CA81CF36F1
 Direct record creation using REST API 
     ${Random}=       Get Current Date     result_format=%H:%M
     ${Dynamic}=           Catenate                    Garvansh       ${Random}
+    ${DynamicContact}=    Catenate                    Gcon-          ${Random}     
     Wait Until Keyword Succeeds                       2x             3s    ClientAuthenticate    ${domain}                   ${ClientId}    ${client_secret}
     
     ${Accounts}            Create record               Account      Name=${Dynamic}    Rating=Hot
-    Log To Console         ${Accounts}
+    Log To Console         AccountId: ${Accounts}
     UpdateRecord           Account                     ${Accounts}                     Phone=1234567899
+
+    ${Contacts}            Create record               Contact                        LastName=${DynamicContact}             AccountId=${Accounts}
+    Log To Console         ContactId: ${Contacts}
     
     ${Query}               QueryRecords                query= Select id,Name from Account Where CreatedDate = TODAY Order By CreatedDate Desc limit 1
     # DeleteRecord           Account                     ${Accounts}
@@ -71,4 +75,8 @@ Direct record creation using REST API
     GoTo                   ${domain}/lightning/r/Account/${Accounts}/view
     ClickText              Details
     Run Keyword And Warn On Failure                    VerifyField            Phone                    1234567899
-    LogScreenshot
+    ClickText                        Related
+    Wait Until Keyword Succeeds      3x                        5s                        VerifyText                       ${DynamicContact}
+    ClickText                        ${DynamicContact}
+    ClickText                        Details
+        
