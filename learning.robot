@@ -70,7 +70,7 @@ Direct record creation using REST API
     Log To Console         ContactId: ${Contacts}
     
     ${Query}               QueryRecords                query= Select id,Name from Account Where CreatedDate = TODAY Order By CreatedDate Desc limit 1
-    # DeleteRecord           Account                     ${Accounts}
+    
     Login salesforce
     GoTo                   ${domain}/lightning/r/Account/${Accounts}/view
     ClickText              Details
@@ -79,4 +79,4 @@ Direct record creation using REST API
     Wait Until Keyword Succeeds      3x                        5s                        VerifyText                       ${DynamicContact}
     ClickText                        ${DynamicContact}
     ClickText                        Details
-        
+    DeleteRecord           Account                     ${Accounts}    
