@@ -40,8 +40,8 @@ Resource                        File.resource
 
     # END
 Direct record creation
-    Backend Record Creation
-    ${Accounts}    ${DynamicContact}=    Backend record creation    cold 
+    
+    ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
     Login salesforce
     GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
     ClickText                   Details
@@ -50,4 +50,4 @@ Direct record creation
     Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
     ClickText                   ${DynamicContact}
     ClickText                   Details
-    DeleteRecord                Account                     ${Accounts}
+    # DeleteRecord                Account                     ${Accounts}
