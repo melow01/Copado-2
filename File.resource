@@ -25,12 +25,13 @@ Login salesforce
     VerifyText                  Developer Edition
 
 Backend Record Creation 
+    [Arguments]                ${Provide_Rating}
     ${Random}=                  Get Current Date            result_format=%H:%M
     ${Dynamic}=                 Catenate                    Garvansh                    ${Random}
     ${DynamicContact}=          Catenate                    Gcon-                       ${Random}
     Wait Until Keyword Succeeds                             2x                          3s                          ClientAuthenticate       ${domain}      ${ClientId}         ${client_secret}
 
-    ${Accounts}                 Create record               Account                     Name=${Dynamic}             Rating=Hot
+    ${Accounts}                 Create record               Account                     Name=${Dynamic}             Rating=${Provide_Rating}
     Log To Console              AccountId: ${Accounts}
     UpdateRecord                Account                     ${Accounts}                 Phone=1234567899
 
