@@ -39,7 +39,7 @@ Resource                        File.resource
     #                           END
 
     # END
-Direct record creation using REST API 
+Direct record creation
     Backend Record Creation
     ${Accounts}    ${DynamicContact}=    Backend record creation 
     Login salesforce
