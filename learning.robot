@@ -41,7 +41,7 @@ Resource                        File.resource
     # END
 Direct record creation
     
-    ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
+    ${Accounts}    ${DynamicContact}=    Backend Record Creation    warm 
     Login salesforce
     GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
     ClickText                   Details
