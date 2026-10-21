@@ -11,76 +11,98 @@ Suite Teardown                  Close All Browsers
 Resource                        File.resource
 
 
+# *** Test Cases ***
+#     # Duplicate check
+#     #                           ${Random_Time}              Get Current Date
+#     #                           ${Dynamic_name}             Catenate       Garvansh      ${Random_Time}
+#     #                           Login salesforce
+#     #                           ClickText                   Contacts
+#     #                           ClickText                   New
+#     #                           ClickText                   Last Name
+#     #                           TypeText                    Last Name      ${Dynamic_name}
+#     #                           ScrollTo                    xpath\=//label[text()\='Email']
+#     #                           TypeText                    Email          Duplicate@mail123.com
+#     #                           ClickText                   Save           partial_match=False
+
+#     # Opportunity stage check
+#     # Login salesforce
+#     # ${popup_exists}           GetElementCount             xpath\=//button[contains(text(),'Dismiss')]
+#     # IF                        ${popup_exists} > 0
+#     #                           ClickText                   Dismiss
+#     # END
+#     # CLickText                 Opportunities
+
+#     # FOR                       ${Opportunities}            IN             @{Opportunities}
+#     #                           ${Stage}                    GetText        xpath\=
+#     #                           IF
+
+#     #                           END
+
+#     # END
+# Direct record creation
+#     [Template]    End To End Account Test
+
+#         cold
+#         warm
+#         hot
+    
+#     # ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
+#     # Login salesforce
+#     # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
+#     # ClickText                   Details
+#     # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+#     # ClickText                   Related
+#     # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
+#     # ClickText                   ${DynamicContact}
+#     # ClickText                   Details
+#     # DeleteRecord                Account                     ${Accounts}
+    
+#     # ${Accounts}    ${DynamicContact}=    Backend Record Creation    warm 
+    
+#     # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
+#     # ClickText                   Details
+#     # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+#     # ClickText                   Related
+#     # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
+#     # ClickText                   ${DynamicContact}
+#     # ClickText                   Details
+#     # DeleteRecord                Account                     ${Accounts}
+    
+
+# ***Keywords***
+# End To End Account Test
+#     [Arguments]    ${Rating_Types}
+#     ${Accounts}    ${DynamicContact}=    Backend Record Creation    ${Rating_Types}
+#     Login salesforce
+#     GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
+#     ClickText                   Details
+#     Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+
+#     ClickText                   Related
+#     Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
+#     ClickText                   ${DynamicContact}
+#     ClickText                   Details
+
+#     DeleteRecord                Account                     ${Accounts}
 *** Test Cases ***
-    # Duplicate check
-    #                           ${Random_Time}              Get Current Date
-    #                           ${Dynamic_name}             Catenate       Garvansh      ${Random_Time}
-    #                           Login salesforce
-    #                           ClickText                   Contacts
-    #                           ClickText                   New
-    #                           ClickText                   Last Name
-    #                           TypeText                    Last Name      ${Dynamic_name}
-    #                           ScrollTo                    xpath\=//label[text()\='Email']
-    #                           TypeText                    Email          Duplicate@mail123.com
-    #                           ClickText                   Save           partial_match=False
-
-    # Opportunity stage check
-    # Login salesforce
-    # ${popup_exists}           GetElementCount             xpath\=//button[contains(text(),'Dismiss')]
-    # IF                        ${popup_exists} > 0
-    #                           ClickText                   Dismiss
-    # END
-    # CLickText                 Opportunities
-
-    # FOR                       ${Opportunities}            IN             @{Opportunities}
-    #                           ${Stage}                    GetText        xpath\=
-    #                           IF
-
-    #                           END
-
-    # END
 Direct record creation
-    [Template]    End To End Account Test
+    End To End Account Test    hot
+    End To End Account Test    warm
+    End To End Account Test    cold
 
-        cold
-        warm
-        hot
-    
-    # ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
-    # Login salesforce
-    # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
-    # ClickText                   Details
-    # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
-    # ClickText                   Related
-    # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
-    # ClickText                   ${DynamicContact}
-    # ClickText                   Details
-    # DeleteRecord                Account                     ${Accounts}
-    
-    # ${Accounts}    ${DynamicContact}=    Backend Record Creation    warm 
-    
-    # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
-    # ClickText                   Details
-    # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
-    # ClickText                   Related
-    # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
-    # ClickText                   ${DynamicContact}
-    # ClickText                   Details
-    # DeleteRecord                Account                     ${Accounts}
-    
-    
-***Keywords***
+*** Keywords ***
 End To End Account Test
     [Arguments]    ${Rating_Types}
     ${Accounts}    ${DynamicContact}=    Backend Record Creation    ${Rating_Types}
+    
     Login salesforce
-    GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
-    ClickText                   Details
-    Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
-
-    ClickText                   Related
-    Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
-    ClickText                   ${DynamicContact}
-    ClickText                   Details
-
-    DeleteRecord                Account                     ${Accounts}
+    GoTo                                 ${domain}/lightning/r/Account/${Accounts}/view
+    ClickText                            Details
+    Run Keyword And Warn On Failure      VerifyField    Phone    1234567899
+    
+    ClickText                            Related
+    Wait Until Keyword Succeeds    3x    5s    VerifyText    ${DynamicContact}
+    ClickText                            ${DynamicContact}
+    ClickText                            Details
+    
+    DeleteRecord                         Account        ${Accounts}
