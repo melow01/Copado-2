@@ -7,7 +7,7 @@ Library                         QWeb
 *** Variables ***
 ${loginURL}                     https://login.salesforce.com/
 ${username}                     garvanshcrt@cyntexa.com
-${password}                     @MITTAL123
+${password}                     @Garvansh123
 ${passkey}                      90LLHDF7DO
 
 ${domain}                       https://orgfarm-55fe4cdac9-dev-ed.develop.my.salesforce.com
@@ -17,7 +17,7 @@ ${ClientSecret}                 8FF9D5E9842AA5FC14B6BC7D08ED531D2CB84C559097CA81
 *** Keywords ***
 Login salesforce
     TypeText                    Username                    ${username}
-    ClickText                   Log in
+    ClickText                   Continue
     TypeText                    Password                    ${password}
     ClickText                   Log in
     TypeText                    Verification Code           ${passkey}
