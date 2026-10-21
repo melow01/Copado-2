@@ -17,7 +17,7 @@ ${ClientSecret}                 8FF9D5E9842AA5FC14B6BC7D08ED531D2CB84C559097CA81
 *** Keywords ***
 Login salesforce
     TypeText                    Username                    ${username}
-    ClickText                   Continue
+    ClickText                   Log in
     TypeText                    Password                    ${password}
     ClickText                   Log in
     TypeText                    Verification Code           ${passkey}
