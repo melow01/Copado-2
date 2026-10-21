@@ -86,7 +86,9 @@ Resource                        File.resource
 #     DeleteRecord                Account                     ${Accounts}
 *** Test Cases ***
 Direct record creation
+    Login salesforce
     End To End Account Test    hot
+    
     End To End Account Test    warm
     End To End Account Test    cold
 
@@ -95,14 +97,19 @@ End To End Account Test
     [Arguments]    ${Rating_Types}
     ${Accounts}    ${DynamicContact}=    Backend Record Creation    ${Rating_Types}
     
-    Login salesforce
+    Log To Console                       Created ${Rating_Types} RecordId:${Accounts}
+
+    
+     
     GoTo                                 ${domain}/lightning/r/Account/${Accounts}/view
     ClickText                            Details
+    VerifyField                        Rating                       ${Rating_Types}
     Run Keyword And Warn On Failure      VerifyField    Phone    1234567899
+
     
     ClickText                            Related
     Wait Until Keyword Succeeds    3x    5s    VerifyText    ${DynamicContact}
     ClickText                            ${DynamicContact}
     ClickText                            Details
     
-    DeleteRecord                         Account        ${Accounts}
+    # DeleteRecord                         Account        ${Accounts}
