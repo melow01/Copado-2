@@ -40,25 +40,47 @@ Resource                        File.resource
 
     # END
 Direct record creation
+    [Template]    End To End Account Test
+
+        cold
+        warm
+        hot
     
-    ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
+    # ${Accounts}    ${DynamicContact}=    Backend Record Creation    cold 
+    # Login salesforce
+    # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
+    # ClickText                   Details
+    # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+    # ClickText                   Related
+    # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
+    # ClickText                   ${DynamicContact}
+    # ClickText                   Details
+    # DeleteRecord                Account                     ${Accounts}
+    
+    # ${Accounts}    ${DynamicContact}=    Backend Record Creation    warm 
+    
+    # GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
+    # ClickText                   Details
+    # Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+    # ClickText                   Related
+    # Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
+    # ClickText                   ${DynamicContact}
+    # ClickText                   Details
+    # DeleteRecord                Account                     ${Accounts}
+    
+    
+***Keywords***
+End To End Account Test
+    [Arguments]    ${Rating_Types}
+    ${Accounts}    ${DynamicContact}=    Backend Record Creation    ${Rating_Types}
     Login salesforce
     GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
     ClickText                   Details
     Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
+
     ClickText                   Related
     Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
     ClickText                   ${DynamicContact}
     ClickText                   Details
-    DeleteRecord                Account                     ${Accounts}
-    
-    ${Accounts}    ${DynamicContact}=    Backend Record Creation    warm 
-    
-    GoTo                        ${domain}/lightning/r/Account/${Accounts}/view
-    ClickText                   Details
-    Run Keyword And Warn On Failure                         VerifyField    Phone         1234567899
-    ClickText                   Related
-    Wait Until Keyword Succeeds                             3x             5s            VerifyText           ${DynamicContact}
-    ClickText                   ${DynamicContact}
-    ClickText                   Details
+
     DeleteRecord                Account                     ${Accounts}
