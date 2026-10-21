@@ -95,7 +95,9 @@ Direct record creation
 *** Keywords ***
 End To End Account Test
     [Arguments]    ${Rating_Types}
+    
     ${Accounts}    ${DynamicContact}=    Backend Record Creation    ${Rating_Types}
+    [Teardown]                        Run Keyword And Ignore Error      DeleteRecord                         Account        ${Accounts}
     
     Log To Console                       Created ${Rating_Types} RecordId:${Accounts}
 
@@ -112,4 +114,4 @@ End To End Account Test
     ClickText                            ${DynamicContact}
     ClickText                            Details
     
-    # DeleteRecord                         Account        ${Accounts}
+    
