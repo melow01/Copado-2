@@ -10,6 +10,9 @@ Suite Setup                     Open Browser          ${loginURL}        chrome
 Suite Teardown                  Close All Browsers
 Resource                        File.resource
 
+
+
+
 *** Test Cases ***
 Validation check
     Login salesforce
@@ -25,10 +28,13 @@ Validation check
     # Lead record Verification                        Technology         ${Empty}
 
 Lead Creation 
+    ${Random}    Get Current Date    result_format=%H:%M
+    ${Lead_Name}           Catenate            Garvansh    ${Random}
+    ${Random_Comp}    Catenate            Comp        ${Random}
     Login salesforce
 
-    Lead record Generation      Garvansh              Mittal             TestComp
-    Lead record Generation      Rohit                 Sharma             TestComp
+    Lead record Generation      ${Lead_Name}              Test             ${Random_Comp}
+    Lead record Generation      ${Lead_Name}                 Test             ${Random_Comp}
 
 
 
