@@ -46,12 +46,12 @@ Backend Lead Creation
     ${Random}    Get Current Date    result_format=%H:%M
     ${String}    Generate Random String    8    [LOWER]
     ${Test_website}                        Set Variable    www.${String}.com
-    ${Lead}           Catenate            Garvansh    ${Random}
+    ${Lead_Name}           Catenate            Garvansh    ${Random}
     ${Random_Comp}    Catenate            Comp        ${Random}
 
     Wait Until Keyword Succeeds           2x          3s    ClientAuthenticate    ${domain}    ${ClientId}    ${ClientSecret}
     
     # Lead record creation
-    ${Lead}                        CreateRecord       Lead                        Name=${Lead}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
+    ${Lead}                        CreateRecord       Lead                        Name=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
     Log To Console                 recordId:${Lead}
     RETURN                        ${Lead}
