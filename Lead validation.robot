@@ -28,9 +28,7 @@ Validation check
     # Lead record Verification                        Technology         ${Empty}
 
 Lead Creation 
-    ${Random}    Get Current Date    result_format=%H:%M
-    ${Lead_Name}           Catenate            Garvansh    ${Random}
-    ${Random_Comp}    Catenate            Comp        ${Random}
+
     Login salesforce
 
     Lead record Generation      ${Lead_Name}              Test             ${Random_Comp}
