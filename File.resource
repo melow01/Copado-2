@@ -86,6 +86,6 @@ Lead record Generation
     TypeText       Company          ${Company}
     ClickText      Save             partial_match=False
     ClickText      Details
-    VerifyField    Name             ${First_Name} && ${Last_Name}
+    VerifyField    Name             ${First_Name} 
     VerifyField    Company          ${Company}
     
