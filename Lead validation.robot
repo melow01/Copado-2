@@ -18,7 +18,7 @@ Resource                        File.resource
 *** Keywords ***
 Lead record Verification
     [Arguments]    ${Industry}    ${Web}
-    ${Lead}        ${Random_Comp}=       Backend Lead Creation    ${Industry}    ${Web} 
+    ${Lead}        ${Random_Comp}    ${Lead_Name}=       Backend Lead Creation    ${Industry}    ${Web} 
 
     GoTo           ${domain}/lightning/r/Lead/${Lead}/view
     ClickText      Details
