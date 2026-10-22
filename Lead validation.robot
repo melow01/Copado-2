@@ -14,7 +14,7 @@ Resource                        File.resource
 Validation check
     Login salesforce
 
-    Lead record Verification    Technology                  www.cyntexa.com
+    Lead record Verification    Industry=Technology                  www.cyntexa.com
     Lead record Verification    Technology                  ${Empty}
 
 
