@@ -54,4 +54,4 @@ Backend Lead Creation
     # Lead record creation
     ${Lead}                        CreateRecord       Lead                        LastName=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
     Log To Console                 recordId:${Lead}
-    RETURN                        ${Lead}             ${Lead_Name}
+    RETURN                        ${Lead}             ${Lead_Name}                ${Random_Comp}
