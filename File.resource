@@ -71,3 +71,20 @@ Lead record Verification
         VerifyField             Website                     ${Web}
     END
 
+Lead record Generation 
+    [Arguments]    ${First_Name}    ${Last_Name}    ${Company}
+    Login salesforce
+    ClickText      Leads
+    ClickText      New
+    UseModal       On
+    ClickText      First Name
+    TypeText       First Name       ${First_Name}
+    CLickText      Last Name
+    TypeText       Last Name        ${Last_Name}
+    ClickText      Company
+    TypeText       Company          ${Company}
+    ClickText      Save             partial_match=False
+    ClickText      Details
+    VerifyField    Name             ${First_Name} && ${Last_Name}
+    VerifyField    Company          ${Company}
+    
