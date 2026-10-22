@@ -55,3 +55,19 @@ Backend Lead Creation
     ${Lead}                        CreateRecord       Lead                        LastName=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
     Log To Console                 recordId:${Lead}
     RETURN                        ${Lead}             ${Lead_Name}                ${Random_Comp}
+Lead record Verification
+    [Arguments]                 ${Industry}                 ${Web}
+
+    IF                          "${Web}" == "${Empty}"
+        ${error_msg}=           Run Keyword And Expect Error                            *                        Backend Lead Creation    ${Industry}    ${Web}
+        Should Contain          ${error_msg}                Provide Website URL for Technology leads
+        Log To Console          Negative Test case passed
+    ELSE
+        ${Lead}                 ${Random_Comp}              ${Lead_Name}=               Backend Lead Creation    ${Industry}    ${Web}
+        GoTo                    ${domain}/lightning/r/Lead/${Lead}/view
+        ClickText               Details
+        Run Keyword And Warn On Failure                     VerifyField                 Name                     ${Lead_Name}
+        VerifyField             Industry                    ${Industry}
+        VerifyField             Website                     ${Web}
+    END
+
