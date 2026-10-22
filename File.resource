@@ -52,6 +52,6 @@ Backend Lead Creation
     Wait Until Keyword Succeeds           2x          3s    ClientAuthenticate    ${domain}    ${ClientId}    ${ClientSecret}
     
     # Lead record creation
-    ${Lead}                        CreateRecord       Lead                        Name=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
+    ${Lead}                        CreateRecord       Lead                        LastName=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
     Log To Console                 recordId:${Lead}
     RETURN                        ${Lead}             ${Lead_Name}
