@@ -74,6 +74,9 @@ Lead record Verification
 Lead record Generation 
 
     [Arguments]    ${First_Name}    ${Last_Name}    ${Company}
+    ${Random}    Get Current Date    result_format=%H:%M
+    ${Lead_Name}           Catenate            Garvansh    ${Random}
+    ${Random_Comp}    Catenate            Comp        ${Random}
     
     ClickText      Leads
     ClickText      New
