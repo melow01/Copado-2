@@ -8,7 +8,7 @@ Library                         QWeb
 ${loginURL}                     https://login.salesforce.com/
 ${username}                     garvanshcrt@cyntexa.com
 ${password}                     @Garvansh123
-${passkey}                      90LLHDF7DO
+${passkey}                      6LDY93R809
 
 ${domain}                       https://orgfarm-55fe4cdac9-dev-ed.develop.my.salesforce.com
 ${ClientId}                     3MVG91oqviqJKoEFP0o2GjFFWVIq5JktxHDTBhZfoeOt6xL75qlB5MOxA8.3wDFU7HWHZ9HIyH4nd5C2nNZEu
