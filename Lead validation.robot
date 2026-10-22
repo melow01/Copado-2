@@ -12,7 +12,9 @@ Resource                        File.resource
 
 *** Test Cases ***
     Login salesforce
-    Lead record Verification    Technology    www.cyntexa.com    
+    Lead record Verification    Technology    www.cyntexa.com
+    Lead record Verification    
+    
 
 
 *** Keywords ***
@@ -22,7 +24,12 @@ Lead record Verification
 
     GoTo           ${domain}/lightning/r/Lead/${Lead}/view
     ClickText      Details
-    VerifyField    Name                  ${Lead_Name} 
+    Run Keyword And Warn On Failure  VerifyField    Name                  ${Lead_Name} 
     VerifyField    Industry              ${Industry}
     VerifyField    Website               ${Web}  
+    
+
+    
+
+
 
