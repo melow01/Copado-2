@@ -24,7 +24,7 @@ Lead record Verification
     [Arguments]                 ${Industry}                 ${Web}
 
     IF                          "${Web}" == "${Empty}"
-        Run Keyword And Expect Error                        *FIELD_CUSTOM_VALIDATION_EXCEPTION*                         Backend Lead Creation    ${Industry}    ${Web}
+        Run Keyword And Expect Error                        *Bad Request*                         Backend Lead Creation    ${Industry}    ${Web}
         Log To Console          Negative Test case passed
     ELSE
         ${Lead}                     ${Random_Comp}              ${Lead_Name}=            Backend Lead Creation    ${Industry}    ${Web}
