@@ -7,7 +7,7 @@ Library                         QWeb
 *** Variables ***
 ${loginURL}                     https://login.salesforce.com/
 ${username}                     garvanshcrt@cyntexa.com
-${password}                     @Garvansh123
+${password}                     @GARVANSH123
 ${passkey}                      6LDY93R809
 
 ${domain}                       https://orgfarm-55fe4cdac9-dev-ed.develop.my.salesforce.com
@@ -54,4 +54,4 @@ Backend Lead Creation
     # Lead record creation
     ${Lead}                        CreateRecord       Lead                        Name=${Lead_Name}                Company=${Random_Comp}    Industry=${Industry_Name}    Website=${Website}
     Log To Console                 recordId:${Lead}
-    RETURN                        ${Lead}
+    RETURN                        ${Lead}             ${Lead_Name}
