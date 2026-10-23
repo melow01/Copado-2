@@ -92,3 +92,32 @@ Lead record Generation
     Run Keyword And Warn On Failure                 VerifyField    Name             ${First_Name} 
     VerifyField    Company          ${Company}
     
+Contact and Case Creation 
+    [Arguments]    ${Contact_Name}    ${Case_Issue}    ${Origin}
+    ${Random}      Get Current Date    result_format=%H:%M
+    ${Unique_Name}    Catenate         ${Contact_Name}    ${Random}    
+
+    #=================Contact and Case Creation==============
+    
+    Wait Until Keyword Succeeds        2x                 3s    ClientAuthenticate    ${domain}    ${ClientId}    ${ClientSecret}
+    
+    ${Cont_Id}                        CreateRecord        Contact                     LastName=${Unique_Name}
+    Log To Console                    RecordId: ${Cont_Id} 
+    
+    ${Case_Id}                        CreateRecord        Case                        ContactId=${Cont_Id}        Origin= ${Origin}    Status= New    Subject=${Case_Issue}
+    Log To Console                    Case recordID: ${Case_Id}
+
+    RETURN                        ${Cont_Id}              ${Case_Id}                  ${Unique_Name}
+
+Case resolution
+    [Arguments]    ${My_Case_Id}    ${Contact_Name}
+    GoTo    ${domain}/lightning/r/Case/${My_Case_Id}/view
+    ClickText      Details
+    VerifyField    ContactId    ${Contact_Name}
+    PickList       Status       Escalated
+    ScrollTo       Comments
+    ClickText      Edit Internal Comments
+    TypeText       Internal Comments    Case esclated 
+    ClickText      Save
+    ScrollTo       All Updates
+    VerifyText     Case esclated
