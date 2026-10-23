@@ -107,7 +107,7 @@ Contact and Case Creation
     ${Case_Id}                        CreateRecord        Case                        ContactId=${Cont_Id}        Origin= ${Origin}    Status= New    Subject=${Case_Issue}
     Log To Console                    Case recordID: ${Case_Id}
 
-    RETURN                        ${Cont_Id}              ${Case_Id}                  ${Unique_Name}
+    RETURN                                      ${Case_Id}                  ${Unique_Name}
 
 Case resolution
     [Arguments]    ${My_Case_Id}    ${Contact_Name}
