@@ -113,10 +113,11 @@ Case resolution
     [Arguments]    ${My_Case_Id}    ${Contact_Name}
     GoTo    ${domain}/lightning/r/Case/${My_Case_Id}/view
     ClickText      Details
-    # VerifyText        ${Contact_Name}
+    VerifyField    Contact Name        ${Contact_Name}
+    ClickText         Edit Status
     PickList       Status       Escalated
     ScrollTo       Comments
-    ClickText      Edit Internal Comments
+    
     TypeText       Internal Comments    Case esclated 
     ClickText      Save
     ScrollTo       All Updates
