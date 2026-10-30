@@ -7,7 +7,7 @@ Library                         QWeb
 *** Variables ***
 ${loginURL}                     https://login.salesforce.com/
 ${username}                     garvanshcrt@cyntexa.com
-${password}                     @GARVANSH123
+${password}                     @Garvanshh123
 ${passkey}                      Z50WPI893H
 
 ${domain}                       https://orgfarm-55fe4cdac9-dev-ed.develop.my.salesforce.com
